@@ -10,7 +10,7 @@ function Reschedule() {
             <div className="col-md-2"></div>
             <div className="col-md-8 col-12">
               <div className="card-home-5">
-                <h4 className='text-center '><img src="https://www.freeiconspng.com/thumbs/login-icon/user-login-icon-14.png" className='img-size-2' id="icon" alt="User Icon" />Proceed with your Appointment</h4>
+                <h4 className='text-center '><img src="https://www.freeiconspng.com/thumbs/login-icon/user-login-icon-14.png" className='img-size-2' id="icon" alt="User Icon" />Reschedule your Appointment</h4>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date of Appointment</label>
                   <input
