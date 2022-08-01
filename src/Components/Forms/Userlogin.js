@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from "react-router-dom"
+import Userhome from '../view/Userhome';
 function Userlogin() {
   const [userid, setUserid] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [userlogin, setUserlogin] = React.useState(false);
   const handellogin = (e) => {
     e.preventDefault();
     console.log(userid, password);
@@ -14,7 +16,11 @@ function Userlogin() {
       api_key: "registeruser",
     }).then(res => {
       console.log(res);
-      localStorage.setItem('userid',userid );
+      if(res.data.code==200){
+        localStorage.setItem('userid',userid );
+        localStorage.setItem('token',res.data.data.token );
+        setUserlogin(true);
+      }
     }).catch(err => {
       console.log(err);
     })
@@ -22,7 +28,7 @@ function Userlogin() {
   }
   return (
     <>
-    <form onSubmit={(e) => {handellogin(e)}}>
+    {!userlogin? <form onSubmit={(e) => {handellogin(e)}}>
     <div className="img-background">
         <br /><br />
         <div className='container'>
@@ -54,9 +60,9 @@ function Userlogin() {
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <br />
-                    <Link to="/userhome">
+                    
                     <button type="submit" class="btn input-block-level form-control btn-dark">Login</button>
-                    </Link>
+                    
                 </div>
               </div>
               <div className="col-md-2"></div>
@@ -64,7 +70,8 @@ function Userlogin() {
          
         </div>
       </div>
-    </form>
+    </form>:<Userhome/> }
+   
      
 
     </>

@@ -18,8 +18,9 @@ import Userhome from './Components/view/Userhome';
 import Userviewprofile from './Components/view/Userviewprofile';
 import UserAppointment from './Components/view/UserAppointment';
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-
+import { useState } from 'react';
 function App() {
+  
   return (
       <>
       <BrowserRouter>
@@ -35,10 +36,11 @@ function App() {
         <Route exact path='/coachhome' element={<Coachhome/>} />
         <Route exact path="/coachviewprofile" element={<CoachviewProfile/>}/>
         <Route exact path='/coachschedules' element={<NoPlan/>} />
-        <Route exact path='/usehome' element={<Userhome/>} />
-        <Route exact path='userappointments' element={<UserAppointment/>} />
-        <Route exact path='userappointments' element={<Reschedule/>} />
-
+        <Route exact path='/userhome' element={<Userhome/>} />
+        <Route exact path='/userappointments' element={<UserAppointment/>} />
+        <Route exact path='/reappointments' element={<Reschedule/>} />
+        <Route exact path='/appointments' element={<Appointment/>} />
+        <Route exact path='/userprofile' element={<Userviewprofile/>} />
       </Routes>
     
       

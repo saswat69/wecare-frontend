@@ -1,11 +1,43 @@
-import React from 'react'
-
+import React, { useEffect,useState } from 'react'
+import axios from 'axios';
+import {Link} from "react-router-dom";
 export default function Userviewprofile() {
+    const [data,setData]=useState({});
+    const items = localStorage.getItem('userid');
+    useEffect(() => {
+        axios.post('http://localhost:4031/api/v1/users/user/userDetailsbyuserid', { userid: items })
+
+            .then(res => {
+                console.log(res.data.data.userData[0]);
+                setData(res.data.data.userData[0])
+            }
+            )
+            .catch(err => {
+                console.log(err)
+            }
+            )
+
+    }
+        , [])
   return (
     <div>
         <div className="img-background">
                 <br /><br />
                 <div className='container'>
+                <div className="row">
+                        <div className="col-md-6">
+                            <Link to="/userappointments">
+                            <button type="button"  class="btn input-block-level form-control btn-dark">My Appointments</button>
+                            </Link>
+                        
+                        </div>
+                        <div className="col-md-6">
+                            <Link to="/userprofile">
+
+                        <button type="button"  class="btn input-block-level form-control btn-dark">My Profile</button>
+                            </Link>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-md-3 col-12">
                         </div>
@@ -18,12 +50,12 @@ export default function Userviewprofile() {
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        <h3>Nameeee</h3>
-                                        <h6 >Email id:nishidssge@gmail.com</h6>
-                                        <h6 >Date of Birth:09-12-2001</h6>
-                                        <h6 >Mobile No:973237293</h6>
-                                        <h6 >Address:Confidencereereeerf</h6>
-                                        <h6>Pin:759001</h6>
+                                        <h3>{data.name}</h3>
+                                        <h6 >Email id:{data.email}</h6>
+                                        <h6 >Date of Birth:{data.dateofbirth}</h6>
+                                        <h6 >Mobile No:{data.phoneNumber}</h6>
+                                        <h6 >Address:{data.city},{data.country}</h6>
+                                        <h6>Pin:{data.pincode}</h6>
                                     </div>
                                 </div>
                             </div>

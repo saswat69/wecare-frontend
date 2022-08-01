@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-export default function Coachsignup() {
+export default function Coachsignup(props) {
   return (
     <div>
         <div className="img-background">
@@ -9,7 +9,7 @@ export default function Coachsignup() {
         <h4 className='text-center'>
             You are a Coach Now!
         </h4>
-        <h6 className='text-center'>Your Coach id is 5</h6>
+        <h6 className='text-center'>Your Coach id is {props.id}</h6>
         <div className="conatiner">
                 <div className="row">
                   <div className="col-md-4"></div>

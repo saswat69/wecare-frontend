@@ -1,3 +1,4 @@
+import axios from "axios";
 import React,{useEffect,useState} from "react";
 
 function Reschedule() {
@@ -6,6 +7,21 @@ function Reschedule() {
   const handelSubmit=(e)=>{
     e.preventDefault();
     console.log(date,time);
+    const items = localStorage.getItem('userid');
+    console.log(items);
+    axios.post('http://localhost:4031/api/v1/book/bookings/addBooking',{
+      userid:items,
+      date:date,
+      slot:time,
+      coachid:'coach1000',
+    }
+    ).then(res=>{
+      console.log(res.data.data);
+    }
+    ).catch(err=>{
+      console.log(err);
+    }
+    )
   }
   return (
     <>

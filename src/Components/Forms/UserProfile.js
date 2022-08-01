@@ -12,7 +12,8 @@ function UserProfile() {
   const [city, setCity] = useState('');
   const [gender, setGender] = useState('');
   const [country, setCountry] = useState('');
-  const [showuserid, setshowuserid] = useState(false)
+  const [showuserid, setshowuserid] = useState(false);
+  const [userId,setuserId]=useState('')
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(name, mobile, dob, pincode, state, password, email, city, country, gender);
@@ -30,6 +31,10 @@ function UserProfile() {
         country: country,
         state: state
       }).then(res => {
+        if(res.data.code===200){
+          setshowuserid(true)
+          setuserId(res.data.data.userid)
+        }
         console.log(res);
       }).catch(err => {
         console.log(err);
@@ -218,7 +223,7 @@ function UserProfile() {
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                       <br />
-                      <button onClick={() => setshowuserid(true)} type="submit" class="btn input-block-level form-control btn-dark">Register</button>
+                      <button  type="submit" class="btn input-block-level form-control btn-dark">Register</button>
                     </div>
                     <div className="col-md-2"></div>
                   </div>
@@ -230,7 +235,7 @@ function UserProfile() {
 
         </div>
         <br />
-      </div> : <Usersignup/>}
+      </div> : <Usersignup id={userId}/>}
     </>
 
   )

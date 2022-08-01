@@ -9,6 +9,7 @@ function LifeCoachProfile() {
   const [gender,setGender]=useState('');
   const [Speciality,setSpeciality]=useState('')
   const [showcoachid, setshowcoachid] = useState(false)
+  const [coachId,setcoachId]=useState('');
   const handelcoach=(e)=>{
     e.preventDefault();
     console.log(name,mobile,dob,password,gender,Speciality);
@@ -22,6 +23,10 @@ function LifeCoachProfile() {
         gender: gender,
         speciality:Speciality
       }).then(res => {
+        if(res.data.code===200){
+          setshowcoachid(true)
+          setcoachId(res.data.data.coachid)
+        }
         console.log(res);
       }).catch(err => {
         console.log(err);
@@ -145,7 +150,7 @@ function LifeCoachProfile() {
               <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
-                  <button onClick={() => setshowcoachid(true) }  type="submit" class="btn input-block-level form-control btn-dark">Register</button>
+                  <button   type="submit" class="btn input-block-level form-control btn-dark">Register</button>
                 </div>
                 <div className="col-md-2"></div>
               </div>
@@ -154,7 +159,7 @@ function LifeCoachProfile() {
             
           </div>
         </div>
-      </div> : <Coachsignup/>}
+      </div> : <Coachsignup id={coachId}/>}
     </>
 
   );

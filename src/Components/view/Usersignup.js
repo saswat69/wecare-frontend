@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from "react"
-export default function Usersignup() {
+import {Link} from "react-router-dom";
+export default function Usersignup(props) {
     return (
         <div>
             <div className="img-background">
@@ -9,7 +9,7 @@ export default function Usersignup() {
                 <h4 className='text-center'>
                     Account Created Successfully
                 </h4>
-                <h6 className='text-center'>Your Coach id is 5</h6>
+                <h6 className='text-center'>Your Coach id is {props.id}</h6>
                 <div className="conatiner">
                     <div className="row">
                         <div className="col-md-4"></div>
