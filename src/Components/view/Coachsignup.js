@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from "react-router-dom"
 export default function Coachsignup() {
   return (
     <div>
@@ -15,7 +15,9 @@ export default function Coachsignup() {
                   <div className="col-md-4"></div>
                   <div className="col-md-4">
                     <br />
+                    <Link to="/coachlogin">
                     <button type="button" class="btn input-block-level form-control btn-dark">Login Now</button>
+                    </Link>
                   </div>
                   <div className="col-md-4"></div>
                 </div>

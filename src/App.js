@@ -17,29 +17,43 @@ import NoPlan from './Components/view/NoPlan';
 import Userhome from './Components/view/Userhome';
 import Userviewprofile from './Components/view/Userviewprofile';
 import UserAppointment from './Components/view/UserAppointment';
-
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 
 function App() {
   return (
       <>
+      <BrowserRouter>
       <Navbar/>
-      {/* <UserProfile/> */}
-      {/* <Userlogin/> */}
-      {/* <LoginCoach/> */}
-      {/* <LifeCoachProfile/> */}
-      {/* <Homepage/> */}
+      <Routes>
+        <Route exact path='/' element={<Homepage/>}/>
+        <Route exact path="/userlogin" element={<Userlogin/>}/>
+        <Route exact path="/usersignup" element={<UserProfile/>}/>
+        <Route exact path='/usersignup' element={<Usersignup/>} />
+        <Route exact path="/coachlogin" element={<LoginCoach/>}/>
+        <Route exact path="/coachsignup" element={<LifeCoachProfile/>}/>
+        <Route exact path='/coachsignup' element={<Coachsignup/>} />
+        <Route exact path='/coachhome' element={<Coachhome/>} />
+        <Route exact path="/coachviewprofile" element={<CoachviewProfile/>}/>
+        <Route exact path='/coachschedules' element={<NoPlan/>} />
+        <Route exact path='/usehome' element={<Userhome/>} />
+        <Route exact path='userappointments' element={<UserAppointment/>} />
+        <Route exact path='userappointments' element={<Reschedule/>} />
+
+      </Routes>
+    
+      
+      
+      
       {/* <Appointment/> */}
       {/* <Reschedule/> */}
       {/* <Coachsignup/> */}
       {/* <Usersignup/> */}
-      {/* <Coachhome/> */}
-      {/* <CoachviewProfile/> */}
-      {/* <NoPlan/> */}
+      
       {/* <Userhome/> */}
       {/* <Userviewprofile/> */}
       {/* <UserAppointment/> */}
       <Footer/>
-      
+      </BrowserRouter>
      </>
     
   );

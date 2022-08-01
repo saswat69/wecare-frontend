@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import axios from 'axios'
+import Coachsignup from "../view/Coachsignup";
 function LifeCoachProfile() {
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -7,6 +8,7 @@ function LifeCoachProfile() {
   const [password, setPassword] = useState('');
   const [gender,setGender]=useState('');
   const [Speciality,setSpeciality]=useState('')
+  const [showcoachid, setshowcoachid] = useState(false)
   const handelcoach=(e)=>{
     e.preventDefault();
     console.log(name,mobile,dob,password,gender,Speciality);
@@ -27,7 +29,7 @@ function LifeCoachProfile() {
   }
   return (
     <>
-      <div className="img-background">
+      {!showcoachid ? <div className="img-background">
         <div className="container">
           <br /><br />
 
@@ -143,7 +145,7 @@ function LifeCoachProfile() {
               <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
-                  <button type="submit" class="btn input-block-level form-control btn-dark">Register</button>
+                  <button onClick={() => setshowcoachid(true) }  type="submit" class="btn input-block-level form-control btn-dark">Register</button>
                 </div>
                 <div className="col-md-2"></div>
               </div>
@@ -152,7 +154,7 @@ function LifeCoachProfile() {
             
           </div>
         </div>
-      </div>
+      </div> : <Coachsignup/>}
     </>
 
   );

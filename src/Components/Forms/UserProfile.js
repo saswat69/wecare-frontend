@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Usersignup from '../view/Usersignup';
 function UserProfile() {
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -11,6 +12,7 @@ function UserProfile() {
   const [city, setCity] = useState('');
   const [gender, setGender] = useState('');
   const [country, setCountry] = useState('');
+  const [showuserid, setshowuserid] = useState(false)
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(name, mobile, dob, pincode, state, password, email, city, country, gender);
@@ -36,7 +38,7 @@ function UserProfile() {
   }
   return (
     <>
-      <div className="img-background">
+      {(!showuserid) ? <div className="img-background">
         <br />
         <div className="container">
           <div className="card-home-4">
@@ -216,7 +218,7 @@ function UserProfile() {
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                       <br />
-                      <button type="submit" class="btn input-block-level form-control btn-dark">Register</button>
+                      <button onClick={() => setshowuserid(true)} type="submit" class="btn input-block-level form-control btn-dark">Register</button>
                     </div>
                     <div className="col-md-2"></div>
                   </div>
@@ -228,7 +230,7 @@ function UserProfile() {
 
         </div>
         <br />
-      </div>
+      </div> : <Usersignup/>}
     </>
 
   )
